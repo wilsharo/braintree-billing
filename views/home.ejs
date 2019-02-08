@@ -1,15 +1,21 @@
 <md-content layout="column">
-	<form name="form" action="/subscribe" method="post" style="max-width: 300px;">
-		<div>
-			<span>Subscribe Today</span>
+	<form name="form" action="/subscribe?userid=<%= data.userid %>&username=<%= data.username %>" method="post" style="max-width: 300px;">
+		<div class="logo">
+			<a href="https://urltv-mcbattlearena.firebaseapp.com/home/one"><img src="https://firebasestorage.googleapis.com/v0/b/urltv-mcbattlearena.appspot.com/o/urltv_web_images%2Furl_log_transparent.png?alt=media&token=d4aa5a7d-b98c-429b-bbec-6a06ecd209ff"
+				 alt="logo"></a>
+		</div>
+		<div style="padding-top:50px;">
+			<span><font color="white">Subscribe Today</font></span>
 		</div>
 
 		<div layout="row">
-			<p>Choose a plan below to get started.</p>
+			<p><font color="white">Choose a plan below to get started.</font></p>
 		</div>
 
 		<div layout="row">
-			<p>Your credit card information will not interact with our servers.</p>
+			<p>
+				<font color="white">Your credit card information will not interact with our servers.</font>
+			</p>
 		</div>
 
 		<div layout="row">
@@ -23,11 +29,11 @@
 		<div layout="row" style="padding-top:10px;">
 			<select name="plan">
 				<% data.plans.forEach(function(plan) { %>
-					<option value="<%= plan.id%>">
-						$
-						<%= plan.name%>
-					</option>
-					<% }); %>
+				<option value="<%= plan.id%>">
+					$
+					<%= plan.name%>
+				</option>
+				<% }); %>
 			</select>
 		</div>
 
@@ -42,8 +48,7 @@
 </md-content>
 
 <% if (data.token) { %>
-	<script>
-		var token = "<%= data.token %>";
-
-	</script>
-	<% } %>
+<script>
+	var token = "<%= data.token %>";
+</script>
+<% } %>

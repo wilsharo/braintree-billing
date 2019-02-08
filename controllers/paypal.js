@@ -1,9 +1,9 @@
 var braintree = require('braintree');
 var gateway = braintree.connect({
 	environment: braintree.Environment.Sandbox,
-	merchantId: "ENTER YOUR ID",
-	publicKey: "ENTER YOUR KEY",
-	privateKey: "ENTER YOUR PRIVATE KEY"
+	merchantId: "xh3pdcfkffgh6fzd",
+	publicKey: "5h3x9kdgnkjybd6h",
+	privateKey: "889dde73e1114b9aceca54a24e52b362"
 });
 
 var controller = {
@@ -32,8 +32,14 @@ var controller = {
 			}
 		});
 	},
-	createSubscription: function (plan, nonce, callback) {
+	createSubscription: function (plan, nonce, userid, username, callback) {
+
+		console.log('paypal.js User Id: ' + userid);
+		console.log('paypal.js User Name: ' + username);
+	
 		gateway.customer.create({
+			firstName: username,
+			id: userid,
 			paymentMethodNonce: nonce
 		}, function (err, result) {
 			if (result.success) {
